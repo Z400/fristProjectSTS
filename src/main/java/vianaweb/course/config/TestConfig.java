@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import vianaweb.course.entitie.Category;
+import vianaweb.course.entitie.OrdemItem;
 import vianaweb.course.entitie.Order;
 import vianaweb.course.entitie.Product;
 import vianaweb.course.entitie.User;
 import vianaweb.course.enums.OrderStatus;
 import vianaweb.course.repositories.CategoryRepository;
+import vianaweb.course.repositories.OrdemItemRepository;
 import vianaweb.course.repositories.OrderRepository;
 import vianaweb.course.repositories.ProductRepository;
 import vianaweb.course.repositories.UserRepository;
@@ -35,7 +37,8 @@ public class TestConfig implements CommandLineRunner{
 	@Autowired
 	private ProductRepository productRepository;
 	
-	
+	@Autowired
+	private OrdemItemRepository ordemItemRepository;
 	
 	
 	
@@ -59,6 +62,11 @@ public class TestConfig implements CommandLineRunner{
 		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, ""); 
 		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 		
+		OrdemItem oi1 = new OrdemItem(o1, p1, 2, p1.getPrice()); 
+		OrdemItem oi2 = new OrdemItem(o1, p3, 1, p3.getPrice()); 
+		OrdemItem oi3 = new OrdemItem(o2, p3, 2, p3.getPrice()); 
+		OrdemItem oi4 = new OrdemItem(o3, p5, 2, p5.getPrice()); 
+		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
@@ -73,6 +81,7 @@ public class TestConfig implements CommandLineRunner{
 		
 		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 		
+		ordemItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
 	}
 	

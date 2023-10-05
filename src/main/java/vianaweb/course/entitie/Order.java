@@ -2,7 +2,9 @@ package vianaweb.course.entitie;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -12,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import vianaweb.course.enums.OrderStatus;
 
@@ -33,6 +36,9 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn (name = "client_id")
 	private User client;
+	
+	@OneToMany (mappedBy = "id.order")
+	Set <OrdemItem> items = new HashSet<>();
 	
 	
 	private Integer orderStatus;
@@ -90,7 +96,9 @@ public class Order implements Serializable {
 		this.client = client;
 	}
 
-	
+	public Set <OrdemItem> getItems () {
+		return items;
+	}
 
 
 	
