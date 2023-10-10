@@ -48,7 +48,7 @@ public class OrdemItem implements Serializable{
 	}
 		
 	
-	@JsonIgnore
+	
 	public Product getProduct () {
 		return id.getProduct();
 		
