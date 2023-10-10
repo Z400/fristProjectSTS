@@ -32,6 +32,7 @@ public class Order implements Serializable {
 	@JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH-mm-ss'Z'", timezone = "GMT")
 	private Instant moment;
 	
+	private Integer orderStatus;
 	
 	@ManyToOne
 	@JoinColumn (name = "client_id")
@@ -41,7 +42,10 @@ public class Order implements Serializable {
 	Set <OrdemItem> items = new HashSet<>();
 	
 	
-	private Integer orderStatus;
+	
+	
+	 
+	
 	
 	Order () {
 		
@@ -54,6 +58,8 @@ public class Order implements Serializable {
 		setOrderStatus(orderStatus);
 		this.client = client;
 	}
+	
+	
 	
 	
 	
