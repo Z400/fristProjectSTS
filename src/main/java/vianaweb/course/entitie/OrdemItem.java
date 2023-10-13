@@ -97,6 +97,8 @@ public class OrdemItem implements Serializable{
 	}
 	
 	
-	
+	public double getSubTotal () {
+		return quantity * price;
+	}
 	
 }
